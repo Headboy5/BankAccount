@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <random>
 
 class BankAccount {
     public:
@@ -7,6 +8,7 @@ class BankAccount {
         std::string accountHolderName;
 	    int accountNumber = 0;
 	    int sortCode = 0;
+		std::string Address;
         
 		// Deposit function
         void dep() {
@@ -29,7 +31,42 @@ class BankAccount {
                 balance -= amount;
             }
             std::cout << "Withdrawing: " << amount << ", New Balance " << balance << std::endl;
-        }          
+        }
+
+		// Get balance function
+        double getBalance() {
+            return balance;
+        }
+
+		// Display account info function
+        void displayAccountInfo() {
+            std::cout << "Account Holder: " << accountHolderName << std::endl;
+            std::cout << "Account Number: " << accountNumber << std::endl;
+            std::cout << "Sort Code: " << sortCode << std::endl;
+            std::cout << "Balance: " << balance << std::endl;
+		}
+		// Create card function
+        void createCard() {
+			std::cout << "Creating card for " << accountHolderName << std::endl;
+			int cardNumber = rand() % 90000000 + 10000000; // Random 8-digit card number
+			int CVV = rand() % 900 + 100; // Random 3-digit CVV
+			std::string expiryDate = "12/25"; // Fixed expiry date for simplicity
+		}
+		// Register address function
+        void registerAddress() {
+            std::cout << "Enter address: ";
+            std::cin.ignore(); // Clear the input buffer
+            std::getline(std::cin, Address);
+            std::cout << "Address registered: " << Address << std::endl;
+		}
+        void registerPhoneNumber() {
+            std::string phoneNumber;
+            std::cout << "Enter phone number: ";
+            std::cin >> phoneNumber;
+            std::cout << "Phone number registered: " << phoneNumber << std::endl;
+		}
+        
+
 };
 
 int main() {
